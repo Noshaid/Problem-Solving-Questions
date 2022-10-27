@@ -49,3 +49,58 @@ console.log(numbers)
 console.log(probabilities)
 console.log(probabilityPercentages)
 ```
+
+3. Given an arithmetic expression in Reverse Polish Notation, write a program to evaluate it. The expression is given as a list of numbers and operands.
+
+```
+//let input = [5, 3, '+']
+//output = 8
+
+let input = [15, 7, 1, 1, '+', '-', '/', 3, '*', 2, 1, 1, '+', '+', '-']
+//output = 5
+
+const DMAS = (stackArr, expression) => {
+    if (stackArr.length <= 1) {
+        return []
+    }
+    
+    let num2 = stackArr.pop()
+    let num1 = stackArr.pop()
+    
+    if (expression === '+') {
+        stackArr.push(num1 + num2)
+    } else if (expression === '-') {
+        stackArr.push(num1 - num2)
+    } else if (expression == '*') {
+        stackArr.push(num1 * num2)
+    } else if (expression == '/') {
+        stackArr.push(num1 / num2)
+    }
+    
+    return stackArr
+}
+
+const evaluateExpression = (input) => {
+    if (input.length < 3 || input.includes('+','-', '*', '/') == false) {
+        return "Input is not valid!"
+    }
+    
+    let stackArr = []
+    
+    for(let i=0; i<input.length; i++) {
+        if (input[i] === '+' || input[i] === '-' || input[i] === '*' || input[i] === '/') {
+            stackArr = DMAS(stackArr, input[i])
+        } else {
+            stackArr.push(input[i])
+        }
+    } 
+    
+    if (stackArr.length > 1 || stackArr.length == 0) {
+        return "Input is not valid!"
+    } else {
+        return stackArr[0]
+    }
+}
+
+console.log(evaluateExpression(input))
+```
