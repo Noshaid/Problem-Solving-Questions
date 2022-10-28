@@ -104,3 +104,51 @@ const evaluateExpression = (input) => {
 
 console.log(evaluateExpression(input))
 ```
+
+4. Given a list of words, return the shortest unique prefix of each word.
+
+```
+//let input = ["dog", "cat", "apple", "apricot", "fish"]
+//output = ["d", "c", "app", "apr", "f"] 
+
+// let input = ["zebra", "dog", "duck", "dove"]
+//output = [z, dog, du, dov]
+
+//let input = ["geeksgeeks", "geeksquiz", "geeksforgeeks"]
+//output = [geeksg, geeksq, geeksf]
+
+// let input = ["dog", "apple", "apricot", "fish"]
+//output = ["d", "app", "apr", "f"] 
+
+let input = ["dog", "cat", "apple", "apricot", "fish", "do"]
+// output = [ 'dog', 'c', 'app', 'apr', 'f', 'do' ]
+
+const getShortestUniquePrefix = (input) => {
+    let uniquePrefixArr = []
+    for(let i=0; i<input.length; i++) {
+        for(let j=0; j<input[i].length; j++) {
+            let prefix = input[i].substring(0, j+1)
+            let ok = checkUniquePrefix(prefix, i)
+            if (ok === true || ok === false && j === input[i].length-1) {
+                uniquePrefixArr.push(prefix) 
+                break;
+            }
+        }
+    }
+    console.log(uniquePrefixArr)
+}
+
+const checkUniquePrefix = (prefix, index) => {
+    var ok = true
+    for(let i=0; i<input.length; i++) {
+        if (i !== index) {
+            if(input[i].startsWith(prefix) == true) {
+                ok = false
+            } 
+        }
+    }
+    return ok
+}
+
+getShortestUniquePrefix(input)
+```
