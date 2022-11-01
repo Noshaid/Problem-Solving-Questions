@@ -1,5 +1,7 @@
 # Problem Solving Questions
 
+Solution of problems in *Javascript*
+
 
 1. Find an efficient algorithm to find the smallest distance (measured in number of words) between any two given words in a string. For example, given words "hello", and "world" and a text content of "dog cat hello cat dog dog hello cat world", return 1 because there's only one word "cat" in between the two words.
 
@@ -151,4 +153,32 @@ const checkUniquePrefix = (prefix, index) => {
 }
 
 getShortestUniquePrefix(input)
+```
+
+
+5. Given an N by N matrix, rotate it by 90 degrees clockwise.
+```
+// let n = 3
+// let input = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+//let output  [[7, 4, 1], [8, 5, 2], [9, 6, 3]]
+
+let n = 4
+let input = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+//let output  [[13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3], [16, 12, 8, 4]]
+
+let Array2D = (r,c) => [...Array(r)].map(_=>Array(c).fill(0))
+let output = Array2D(n,n)
+let x = 0
+let y = 0 
+
+for(let i=input.length-1; i>=0; i--) {
+    x = 0
+    for(let j=0; j<input.length; j++) {
+        output[x][y] = input[i][j]
+         x = x+1
+    } 
+    y = y+1
+}
+
+console.log(output)
 ```
