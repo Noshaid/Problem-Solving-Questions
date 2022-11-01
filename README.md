@@ -182,3 +182,34 @@ for(let i=input.length-1; i>=0; i--) {
 
 console.log(output)
 ```
+
+6. Given an array of integers, return a new array where each element in the new array is the number of smaller elements to the right of that element in the original input array.
+```
+// let input = [3, 4, 9, 6, 1]
+//let output = [1, 1, 2, 1, 0]
+
+let input = [7, 9, 3, 5, 7, 1]
+//let output = [3, 4, 1, 1, 1, 0]
+
+let output = []
+
+function smallerElementsToRight(index) {
+    let count = 0
+    let currentElement = input[index]
+    for(let i=index; i<input.length; i++) {
+        if (input[i] < currentElement) {
+            count = count + 1
+        }
+    }
+    return count
+}
+
+function iterateArray() {
+    for(let i=0; i<input.length; i++) {
+        output.push(smallerElementsToRight(i))
+    }
+}
+
+iterateArray()
+console.log(output)
+```
