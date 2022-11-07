@@ -261,3 +261,37 @@ function iterateArray() {
 iterateArray()
 console.log(output)
 ```
+
+7. Write a function to flatten a nested dictionary. Namespace the keys with a period.
+```
+let input = {
+    "key": 3,
+    "foo": {
+        "a": 5,
+        "bar": {
+            "baz": 8,
+        },
+    }
+}
+// let output = {
+//     "key": 3,
+//     "foo.a": 5,
+//     "foo.bar.baz": 8
+// }
+let output = {}
+
+const flattenNestedDictionary = (inputDict, flattenKey) => {
+    for (const key in inputDict) {
+        let value = inputDict[key]
+        let updatedKey = flattenKey == "" ? key : flattenKey + "." + key
+        if(typeof value === 'object') {
+            flattenNestedDictionary(value, updatedKey)
+        } else {
+            output[updatedKey] = value
+        }
+    }
+}
+
+flattenNestedDictionary(input, "")
+console.log(output)
+```
