@@ -295,3 +295,23 @@ const flattenNestedDictionary = (inputDict, flattenKey) => {
 flattenNestedDictionary(input, "")
 console.log(output)
 ```
+
+8. You are given a string s. You need to reverse the string.
+```
+function reverseWord(str){
+    let arr = str.split('')
+    let start = 0
+    let end = str.length-1
+        
+    while(start < end) {
+        let temp = arr[start]
+        arr[start] = arr[end]
+        arr[end] = temp
+        start = start + 1
+        end = end - 1
+    }
+    return arr.join('')
+}
+
+console.log(reverseWord('world'))
+```
