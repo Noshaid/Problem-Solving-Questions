@@ -60,6 +60,12 @@ Solution 1:
 //let input = [5, 3, '+']
 //output = 8
 
+//let input = [2, 4, '*', 8, '+']
+//output = 16
+
+//let input = [2, 4, 8, '+', '*']
+//output = 24
+
 let input = [15, 7, 1, 1, '+', '-', '/', 3, '*', 2, 1, 1, '+', '+', '-']
 //output = 5
 
